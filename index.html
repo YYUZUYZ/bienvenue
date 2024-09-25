@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .socials a {
+            margin-right: 10px;
+        }
+        .project {
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function showSection(section) {
+            // Masquer toutes les sections
+            document.querySelectorAll('.section').forEach(function (el) {
+                el.classList.add('hidden');
+            });
+            // Afficher la section choisie
+            document.getElementById(section).classList.remove('hidden');
+        }
+
+        // Afficher la section d'inscription au chargement
+        window.onload = function() {
+            showSection('login');
+        };
+    </script>
+</head>
+<body>
+
+<!-- Page d'accueil -->
+<div class="container">
+    <h1>Bienvenue sur mon portfolio !</h1>
+    <p>Je suis TANOH MODESTE, un [/ta spécialité].</p>
+    <div class="socials">
+        <h2>Me suivre sur :</h2>
+        <a href="https://wa.me/tonnuméro">WhatsApp</a>
+        <a href="https://instagram.com/tonprofil">Instagram</a>
+        <a href="https://facebook.com/tonprofil">Facebook</a>
+    </div>
+</div>
+
+<!-- Page de connexion -->
+<div class="container section hidden" id="login">
+    <h1>Connexion</h1>
+    <form action="#portfolio" method="post" onsubmit="showSection('portfolio'); return false;">
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Se connecter</button>
+    </form>
+    <p>Pas encore inscrit ? <a href="#signup" onclick="showSection('signup')">Créer un compte</a></p>
+</div>
+
+<!-- Page d'inscription -->
+<div class="container section hidden" id="signup">
+    <h1>Inscription</h1>
+    <form action="#login" method="post" onsubmit="showSection('login'); return false;">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email_signup" name="email" required>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password_signup" name="password" required>
+
+        <button type="submit">S'inscrire</button>
+    </form>
+</div>
+
+<!-- Page du portfolio -->
+<div class="container section hidden" id="portfolio">
+    <h1>Mon Portfolio</h1>
+    <div class="project">
+        <h2>Projet 1</h2>
+        <img src="projet1.jpg" alt="Description du projet 1" style="width:100%;">
+        <p>Description de ton projet ici.</p>
+        <a href="lien_vers_projet1">Voir le projet</a>
+    </div>
+    <div class="project">
+        <h2>Projet 2</h2>
+        <img src="projet2.jpg" alt="Description du projet 2" style="width:100%;">
+        <p>Description de ton projet ici.</p>
+        <a href="lien_vers_projet2">Voir le projet</a>
+    </div>
+    <!-- Ajoute d'autres projets ici -->
+    
+    <h2>Payer pour un service</h2>
+    <p>Choisissez votre méthode de paiement :</p>
+    <button onclick="showSection('payment_wave')">Payer avec Wave</button>
+    <button onclick="showSection('payment_mtn')">Payer avec MTN Money</button>
+    <button onclick="showSection('payment_moov')">Payer avec Moov</button>
+    <button onclick="showSection('payment_orange')">Payer avec Orange</button>
+</div>
+
+<!-- Pages de paiement -->
+<div class="container section hidden" id="payment_wave">
+    <h1>Paiement avec Wave</h1>
+    <form action="#confirmation_wave" method="post">
+        <label for="montant_wave">Montant :</label>
+        <input type="number" id="montant_wave" name="montant" required>
+
+        <label for="numero_wave">Numéro de téléphone :</label>
+        <input type="tel" id="numero_wave" name="numero" required>
+
+        <button type="submit">Payer</button>
+    </form>
+</div>
+
+<div class="container section hidden" id="payment_mtn">
+    <h1>Paiement avec MTN Money</h1>
+    <form action="#confirmation_mtn" method="post">
+        <label for="montant_mtn">Montant :</label>
+        <input type="number" id="montant_mtn" name="montant" required>
+
+        <label for="numero_mtn">Numéro de téléphone :</label>
+        <input type="tel" id="numero_mtn" name="numero" required>
+
+        <button type="submit">Payer</button>
+    </form>
+</div>
+
+<div class="container section hidden" id="payment_moov">
+    <h1>Paiement avec Moov</h1>
+    <form action="#confirmation_moov" method="post">
+        <label for="montant_moov">Montant :</label>
+        <input type="number" id="montant_moov" name="montant" required>
+
+        <label for="numero_moov">Numéro de téléphone :</label>
+        <input type="tel" id="numero_moov" name="numero" required>
+
+        <button type="submit">Payer</button>
+    </form>
+</div>
+
+<div class="container section hidden" id="payment_orange">
+    <h1>Paiement avec Orange Money</h1>
+    <form action="#confirmation_orange" method="post">
+        <label for="montant_orange">Montant :</label>
+        <input type="number" id="montant_orange" name="montant" required>
+
+        <label for="numero_orange">Numéro de téléphone :</label>
+        <input type="tel" id="numero_orange" name="numero" required>
+
+        <button type="submit">Payer</button>
+    </form>
+</div>
+
+</body>
+</html>
